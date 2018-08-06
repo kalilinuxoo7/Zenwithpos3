@@ -123,3 +123,23 @@ void CHistoricalChain::SetTip(CBlockIndex *pindex)
 {
     throw std::runtime_error("Cannot SetTip of a CHistoricalChain!");
 }
+
+uint256 CBlockIndex::GetBlockTrust() const
+{
+    uint256 bnTarget;
+    bnTarget.SetCompact(nBits);
+    if (bnTarget <= 0)
+        return 0;
+
+    if (IsProofOfStake())
+    {
+        // Return trust score as usual
+        return (uint256(1)<<256) / (bnTarget+1);
+    }
+    else
+    {
+        // Calculate work amount for block
+        uint256 bnPoWTrust = ((~uint256(0) >> 20) / (bnTarget+1));
+        return bnPoWTrust > 1 ? bnPoWTrust : 1;
+    }
+}

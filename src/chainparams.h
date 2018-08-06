@@ -68,6 +68,7 @@ public:
     int64_t PruneAfterHeight() const { return nPruneAfterHeight; }
     unsigned int EquihashN() const { return nEquihashN; }
     unsigned int EquihashK() const { return nEquihashK; }
+	int MaxReorganizationDepth() const { return nMaxReorganizationDepth; }
     std::string CurrencyUnits() const { return strCurrencyUnits; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
@@ -93,6 +94,7 @@ protected:
     std::vector<unsigned char> vAlertPubKey;
     int nDefaultPort = 0;
     int nMinerThreads = 0;
+	int nMaxReorganizationDepth;
     long nMaxTipAge = 0;
     uint64_t nPruneAfterHeight = 0;
     unsigned int nEquihashN = 0;

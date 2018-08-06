@@ -66,7 +66,7 @@ public:
         /**
          * ZEN Network Magic Start Value
          */
-
+		nMaxReorganizationDepth = 12;
         pchMessageStart[0] = 0x63;
         pchMessageStart[1] = 0x61;
         pchMessageStart[2] = 0x73;
